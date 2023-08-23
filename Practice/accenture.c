@@ -1,42 +1,42 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
 
-int cal(int arr[], int n, int r, int unit)
+int calculate (int r, int unit, int arr[], int n)
 {
-    if(arr==NULL){
-        return -1;
-    }
-    int totalfoodRequired=r*unit;
-    int amountofFood=0;
-    int i=0;
-    
-    for(i=0; i<n; i++)
+  if (n == 0)
+    return -1;
+  int totalFoodRequired = r * unit;
+  int foodTillNow = 0;
+  int house = 0;
+  for (house = 0; house < n; ++house)
     {
-        amountofFood+=arr[i];
-        // if(amountofFood>=totalfoodRequired)
-        // {
-        //     break;
-        // }
+      foodTillNow += arr[house];
+      if (foodTillNow >= totalFoodRequired)
+	{
+	  break;
+	}
     }
-    if(totalfoodRequired>amountofFood)
-    {
-        return 0;
-    }
-    return i+1;
+  if (totalFoodRequired > foodTillNow)
+    return 0;
+  return house + 1;
 }
 
-int main(){
-    int n,r,unit;
-    int arr[n];
-
-    scanf("size= %d",&n);
-    scanf("rat= %d",&r);
-    scanf("unit= %d",&unit);
-
-    for(int i=0; i<n; i++)
+int main ()
+{
+  int r;
+  printf("Rats=");
+  scanf ("%d", &r);
+  int unit;
+   printf("Unit they consume=");
+  scanf ("%d", &unit);
+  int n;
+   printf("Size=");
+  scanf ("%d", &n);
+  int arr[n];
+   printf("array element=");
+  for (int i = 0; i < n; ++i)
     {
-        scanf("%d",&arr[i]);
+      scanf ("%d", &arr[i]);
     }
-    cal(arr,n,r,unit);
+  printf ("/n%d", calculate (r, unit, arr, n));
   return 0;
 }
